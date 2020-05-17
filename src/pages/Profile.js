@@ -2,6 +2,8 @@ import React, {useContext, useEffect} from "react";
 import {GithubContext} from "../context/gitHub/githubContext";
 import {Link} from "react-router-dom";
 import {Repos} from "../components/repos";
+import Preloader from "../components/Preloader/Preloader";
+
 
 export const Profile = ({match}) => {
     const {getUser, getRepos, loading, user, repos} = useContext(GithubContext);
@@ -14,7 +16,7 @@ export const Profile = ({match}) => {
     }, []);
 
     if (loading) {
-        return <p className="text-center">Загрузка...</p>
+        return <Preloader />
     }
 
     const {name, company, avatar_url, location, bio, blog, login, html_url, followers, public_repos, public_gists, following} = user;
